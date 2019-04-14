@@ -1,0 +1,36 @@
+language: node_js
+
+notifications:
+  email: false
+
+sudo: false
+
+services:
+  - docker
+
+node_js:
+    - "10.15.3"
+
+cache: 
+  yarn : true
+  directories:
+    - node_modules
+
+jobs:
+  include:
+    - stage: lint
+      name: JS lint
+      script: yarn lint
+    - script: yarn stylelint
+      name: CSS lint
+    - stage: test
+      name: Unit test
+      script: yarn test
+    - stage: deploy
+      name: Deploy to Heroku
+      script:
+        - chmod 755 deploy-to-heroku.sh
+        - ./deploy-to-heroku.sh
+      branches:
+        only:
+          - master
