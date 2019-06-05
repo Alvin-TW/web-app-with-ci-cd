@@ -131,7 +131,7 @@ Then, export Heroku API token to environment
 $ export HEROKU_AUTH_TOKEN=$(heroku auth:token)
 ```
 
-Excute `deploy-to-heroku.sh`
+Execute `deploy-to-heroku.sh`
 ```
 $ . deploy-to-heroku.sh
 ```
